@@ -224,8 +224,8 @@
   :demand t
   :general
   (nmap
-    "M-}" #'centaur-tabs-forward
-    "M-{" #'centaur-tabs-backward) 
+    "s-}" #'centaur-tabs-forward
+    "s-{" #'centaur-tabs-backward) 
   :init
   (setq centaur-tabs-style "rounded"
 	centaur-tabs-set-modified-marker t
