@@ -235,3 +235,19 @@
   (centaur-tabs-headline-match)
   (centaur-tabs-inherit-tabbar-faces))
 
+(use-package magit
+  :ensure t
+  :defer t
+  :general
+  (nmap
+    :prefix "SPC"
+    "g" '(nil :which-key "magit")
+    "gg" '(magit-status :which-key "magit status"))
+  :init
+  (setq magit-last-seen-setup-instructions "1.4.0"
+	magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1)
+
+  :config
+  (use-package evil-magit :ensure t))
+
+
