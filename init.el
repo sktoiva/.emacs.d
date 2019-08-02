@@ -38,7 +38,7 @@
 (setq whitespace-style '(face tabs tab-mark trailing)
       mode-require-final-newline t)
 (global-whitespace-mode 1)
-(add-hook 'before-save-hook 'whetspace-cleanup)
+(add-hook 'before-save-hook 'whitespace-cleanup)
 
 ;; Configure font
 (add-to-list 'default-frame-alist
