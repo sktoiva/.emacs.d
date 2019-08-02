@@ -87,7 +87,11 @@
 (use-package general
   :ensure t
   :config
-  (general-evil-setup t)) ;Generate vim like setters for general, like nmap)
+  (general-evil-setup t) ;Generate vim like setters for general, like nmap)
+  ;; Global prefix key definitions spanning multiple packages
+  (nmap
+   :prefix "SPC"
+   "t" '(nil :which-key "toggle")))
 
 (use-package which-key
   :ensure t
