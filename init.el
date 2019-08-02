@@ -142,6 +142,7 @@
   :general
   (nmap
     :prefix "SPC"
+    "s" '(nil :which-key "smartparens")
     "sk" '(sp-splice-sexp-killing-forward :which-key "Splice killing forward")
     "sj" '(sp-splice-sexp-killing-backward :which-key "Splice killing backward"))
   :config
