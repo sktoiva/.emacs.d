@@ -109,16 +109,24 @@
         telephone-line-evil-use-short-tag t)
   :config
   (telephone-line-mode 1))
+
 ;; Keybindings and descriptions with general and which-key
 ;; Keep general loading here, for it sets the :general keyword for use-package
 (use-package general
   :ensure t
   :config
   (general-evil-setup t) ;Generate vim like setters for general, like nmap)
+  (nmap
+    "s-s" 'save-buffer)
   ;; Global prefix key definitions spanning multiple packages
   (nmap
     :prefix "SPC"
-    "t" '(nil :which-key "toggle")))
+    "t" '(nil :which-key "toggle")
+    "h" '(nil :which-key "help")
+    "hk" '(describe-key :which-key "describe-key")
+    "hv" '(describe-variable :which-key "describe-variable")
+    "hf" '(describe-function :which-key "describe-function")
+    "hd" '(apropos-documentation :which-key "documentation")))
 
 (use-package which-key
   :ensure t
