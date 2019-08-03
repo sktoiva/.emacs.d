@@ -81,6 +81,14 @@
 
 ;; ********************************************************************************************************************
 
+;; PATH from shell
+(use-package exec-path-from-shell
+  :ensure t
+  :demand
+  :config
+  (when (memq window-system '(mac ns))
+    (exec-path-from-shell-initialize)))
+
 (use-package uniquify
   :config
   (setq uniquify-buffer-name-style 'forward))
