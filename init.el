@@ -153,7 +153,8 @@
 (use-package helm
   :ensure t
   :general
-  ("M-x" #'helm-M-x)
+  ("M-x" #'helm-M-x
+   "C-x C-f" #'helm-find-files)
   (:keymaps 'helm-map
             "<tab>" #'helm-execute-persistent-action
             "C-i" #'helm-execute-persistent-action)
