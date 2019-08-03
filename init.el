@@ -18,6 +18,9 @@
       windmove-wrap-around t            ; wrap aronud when navigating between windows
       mac-option-modifier 'meta
       mac-command-modifier 'super
+      mac-pass-control-to-system nil
+      default-input-method "MacOSX"
+      frame-title-format nil
       use-dialog-box nil
       custom-file "./custom.el")
 
