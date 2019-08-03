@@ -16,7 +16,11 @@
       sentence-end-double-space nil  ; sentence SHOULD end with only a point.
       default-fill-column 80    ; toggle wrapping text at the 80th character
       windmove-wrap-around t            ; wrap aronud when navigating between windows
+      mac-option-modifier 'meta
+      mac-command-modifier 'super
+      use-dialog-box nil
       custom-file "./custom.el")
+
 (load custom-file)
 
 (setq-default indent-tabs-mode nil)
