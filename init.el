@@ -84,9 +84,31 @@
 
 (use-package nord-theme
   :ensure t
+  :demand
   :config
   (load-theme 'nord t))
 
+(use-package telephone-line
+  :ensure t
+  :demand
+  :init
+  (setq telephone-line-lhs
+        '((evil   . (telephone-line-evil-tag-segment))
+          (accent . (telephone-line-vc-segment
+                     telephone-line-process-segment))
+          (nil    . (telephone-line-minor-mode-segment
+                     telephone-line-buffer-segment))))
+  (setq telephone-line-rhs
+        '((nil    . (telephone-line-misc-info-segment))
+          (accent . (telephone-line-major-mode-segment))
+          (evil   . (telephone-line-airline-position-segment))))
+  (setq telephone-line-height 24
+        telephone-line-subseparator-faces '((evil . nil)
+                                            (accent . nil)
+                                            (nil . accent))
+        telephone-line-evil-use-short-tag t)
+  :config
+  (telephone-line-mode 1))
 ;; Keybindings and descriptions with general and which-key
 ;; Keep general loading here, for it sets the :general keyword for use-package
 (use-package general
