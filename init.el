@@ -289,15 +289,17 @@
   :general
   (nmap
     :keymaps 'neotree-mode-map
-    "<tab>" #'neotree-enter
-    "SPC" #'neotree-quick-look
+    "<tab>" #'neotree-quick-look
     "q" #'neotree-hide
     "RET" #'neotree-enter
     "g" #'neotree-refresh
     "j" #'neotree-next-line
     "k" #'neotree-previous-line
     "A" #'neotree-stretch-toggle
-    "H" #'neotree-hidden-file-toggle
+    "H" #'neotree-hidden-file-toggle)
+  (nmap
+    :keymaps 'neotree-mode-map
+    :prefix "SPC"
     "tn" '(neotree-toggle :which-key "neotree toggle"))
   (nmap
     :prefix "SPC"
