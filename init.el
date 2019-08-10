@@ -152,8 +152,31 @@
 
 (use-package evil
   :ensure t
+  :demand
   :config
   (evil-mode 1))
+
+(use-package evil-goggles
+  :ensure t
+  :demand
+  :after (evil evil-smartparens)
+  :init
+  (setq evil-goggles-enable-paste nil
+        evil-goggles-enable-delete nil
+        evil-goggles-blocking-duration 0.100)
+  :config
+  (set-face-attribute 'evil-goggles-default-face nil :inherit 'isearch-fail)
+  (setq evil-goggles--commands
+        (append evil-goggles--commands
+                '((evil-sp-yank :face evil-goggles-yank-face :switch evil-goggles-enable-yank :advice evil-goggles--generic-async-advice)
+                  (evil-sp-yank-line :face evil-goggles-yank-face :switch evil-goggles-enable-yank :advice evil-goggles--generic-async-advice)
+                  (evil-sp-delete :face evil-goggles-delete-face :switch evil-goggles-enable-delete :advice evil-goggles--generic-blocking-advice)
+                  (evil-sp-delete-char :face evil-goggles-delete-face :switch evil-goggles-enable-delete :advice evil-goggles--generic-blocking-advice)
+                  (evil-sp-delete-line :face evil-goggles-delete-face :switch evil-goggles-enable-delete :advice evil-goggles--delete-line-advice)
+                  (evil-sp-change :face evil-goggles-change-face :switch evil-goggles-enable-change :advice evil-goggles--generic-blocking-advice)
+                  (evil-sp-change-line :face evil-goggles-change-face :switch evil-goggles-enable-change :advice evil-goggles--generic-blocking-advice)
+                  (evil-sp-change-whole-line :face evil-goggles-change-face :switch evil-goggles-enable-change :advice evil-goggles--generic-blocking-advice))))
+  )
 
 (use-package helm
   :ensure t
@@ -161,10 +184,10 @@
   :general
   ("M-x" #'helm-M-x
    "C-x C-f" #'helm-find-files)
-  (:keymaps 'helm-map
-            "<tab>" #'helm-execute-persistent-action
-            "C-i" #'helm-execute-persistent-action)
-
+  (nmap
+    :keymaps 'helm-map
+    "<tab>" #'helm-execute-persistent-action
+    "C-i" #'helm-execute-persistent-action)
   (nmap
     :prefix "SPC"
     "SPC" '(helm-find-files :which-key "helm find files")
