@@ -180,6 +180,13 @@
   :config
   (global-company-mode))
 
+(use-package avy
+  :ensure t
+  :general
+  (nmap
+    :prefix "SPC"
+    "a" '(avy-goto-char-timer :which-key "Ace jump")))
+
 ;; Parens editing
 
 (use-package smartparens
