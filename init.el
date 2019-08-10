@@ -128,7 +128,8 @@
   :config
   (general-evil-setup t) ;Generate vim like setters for general, like nmap)
   (nmap
-    "s-s" 'save-buffer)
+    "s-s" 'save-buffer
+    "s-v" 'evil-paste-after)
   ;; Global prefix key definitions spanning multiple packages
   (nmap
     :prefix "SPC"
