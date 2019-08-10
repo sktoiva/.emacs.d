@@ -258,7 +258,8 @@
     "j" #'neotree-next-line
     "k" #'neotree-previous-line
     "A" #'neotree-stretch-toggle
-    "H" #'neotree-hidden-file-toggle)
+    "H" #'neotree-hidden-file-toggle
+    "tn" '(neotree-toggle :which-key "neotree toggle"))
   (nmap
     :prefix "SPC"
     "tn" '(neotree-toggle :which-key "neotree toggle"))
