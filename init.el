@@ -139,8 +139,12 @@
     "hf" '(describe-function :which-key "describe-function")
     "hd" '(apropos-documentation :which-key "documentation")))
 
+(use-package delight
+  :ensure t)
+
 (use-package which-key
   :ensure t
+  :delight
   :config
   (which-key-mode)
   (which-key-setup-minibuffer))
@@ -152,6 +156,7 @@
 
 (use-package helm
   :ensure t
+  :delight
   :general
   ("M-x" #'helm-M-x
    "C-x C-f" #'helm-find-files)
@@ -177,6 +182,7 @@
 
 (use-package company
   :ensure t
+  :delight " c"
   :config
   (global-company-mode))
 
@@ -235,6 +241,7 @@
 
 (use-package projectile
   :ensure t
+  :delight '(:eval (concat " P[" (projectile-project-name) "]"))
   :general
   (nmap
     :keymaps 'projectile-mode-map
