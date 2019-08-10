@@ -384,6 +384,14 @@
       (cider-repl-return))
     (message "(user/reset) called")))
 
+(use-package cider-eval-sexp-fu
+  :ensure t
+  :after cider
+  :init
+  (set-face-background 'eval-sexp-fu-flash nil)
+  (set-face-foreground 'eval-sexp-fu-flash nil)
+  (set-face-attribute 'eval-sexp-fu-flash nil :inherit 'isearch-fail))
+
 (use-package clj-refactor
   :ensure t
   :after clojure-mode
