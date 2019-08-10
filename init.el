@@ -297,4 +297,46 @@
   :config
   (use-package evil-magit :ensure t))
 
+(use-package clojure-mode
+  :ensure t
+  :hook ((clojure-mode-hook . eldoc-mode))
+  :mode "\\.clj\\'")
 
+(use-package cider
+  :ensure t
+  :after clojure-mode
+  :hook ((clojure-mode-hook . cider-mode))
+  :general
+  (nmap
+    :keymaps 'clojure-mode-map
+    :prefix ","
+    "c" '(nil :which-key "cider")
+    "cj" '(cider-jack-in-clj&cljs :which-key "cider-jack-in-clj&cljs"))
+  (nmap
+    :keymaps 'cider-mode-map
+    :prefix ","
+    "e" '(nil :which-key "eval")
+    "ep" '(cider-eval-last-sexp :which-key "eval-last-sexp")
+    "en" '(cider-eval-ns-form :which-key "eval-ns-form")
+    "ur" '(my-clojure/cider-reset :which-key "user-reset")
+    "g" '(nil :which-key "cider-goto")
+    "gj" '(cider-find-dwim :which-key "jump-to-def"))
+  :init
+  (setq cider-repl-display-help-banner nil
+        cider-repl-pop-to-buffer-on-connect nil
+        cider-repl-result-prefix ";; => "
+        cider-interactive-eval-result-prefix ";; => ")
+  :config
+  (defun my-clojure/cider-reset ()
+    (interactive)
+    (cider-ensure-connected)
+    (with-current-buffer (cider-current-repl-buffer)
+      (goto-char (point-max))
+      (insert "(user/reset)")
+      (cider-repl-return))
+    (message "(user/reset) called")))
+
+(use-package clj-refactor
+  :ensure t
+  :after clojure-mode
+  :hook ((clojure-mode-hook . clj-refactor-mode)))
