@@ -166,10 +166,11 @@
 
   (nmap
     :prefix "SPC"
-    "SPC" '(helm-find-files :which-key "helm find files"))
+    "SPC" '(helm-find-files :which-key "helm find files")
+    "/i" '(helm-imenu :which-key "helm imenu"))
 
   :init
-  (setq helm-move-to-line-cycle-in-source     t ; move to end or beginning of source when reaching top or bottom of source.
+  (setq helm-move-to-line-cycle-in-source     nil ; move to end or beginning of source when reaching top or bottom of source.
         helm-ff-file-name-history-use-recentf t
         helm-mode-fuzzy-match                 t
         helm-completion-in-region-fuzzy-match t
