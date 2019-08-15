@@ -308,28 +308,6 @@
   (setq neo-theme 'nerd
         neo-smart-open t))
 
-(use-package all-the-icons
-  :ensure t)
-
-(use-package centaur-tabs
-  :ensure t
-  :demand t
-  :general
-  (nmap
-    "s-}" #'centaur-tabs-forward
-    "s-{" #'centaur-tabs-backward)
-  :init
-  (setq centaur-tabs-style "zigzag"
-        centaur-tabs-set-icons t
-        centaur-tabs-gray-out-icons 'buffer
-        centaur-tabs-height 32
-        centaur-tabs-set-modified-marker t
-        centaur-tabs-modified-marker "⬤")
-  :config
-  (centaur-tabs-mode t)
-;;  (centaur-tabs-headline-match)
-  (centaur-tabs-inherit-tabbar-faces))
-
 (use-package magit
   :ensure t
   :defer t
