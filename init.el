@@ -22,7 +22,7 @@
       default-input-method "MacOSX"
       frame-title-format nil
       use-dialog-box nil
-      custom-file "./custom.el")
+      custom-file "~/.emacs.d/custom.el")
 
 (load custom-file)
 
@@ -85,6 +85,8 @@
 (use-package exec-path-from-shell
   :ensure t
   :demand
+  :init
+  (setq exec-path-from-shell-check-startup-files nil)
   :config
   (when (memq window-system '(mac ns))
     (exec-path-from-shell-initialize)))
@@ -107,8 +109,8 @@
         '((evil   . (telephone-line-evil-tag-segment))
           (accent . (telephone-line-vc-segment
                      telephone-line-process-segment))
-          (nil    . (telephone-line-minor-mode-segment
-                     telephone-line-file-name-absolute-path-segment))))
+          (nil    . (telephone-line-file-name-absolute-path-segment
+                     telephone-line-minor-mode-segment))))
   (setq telephone-line-rhs
         '((nil    . (telephone-line-misc-info-segment))
           (accent . (telephone-line-major-mode-segment))
@@ -184,10 +186,9 @@
   :general
   ("M-x" #'helm-M-x
    "C-x C-f" #'helm-find-files)
-  (nmap
-    :keymaps 'helm-map
-    "<tab>" #'helm-execute-persistent-action
-    "C-i" #'helm-execute-persistent-action)
+  (:keymaps 'helm-map
+            "<tab>" #'helm-execute-persistent-action
+            "C-i" #'helm-execute-persistent-action)
   (nmap
     :prefix "SPC"
     "SPC" '(helm-find-files :which-key "helm find files")
